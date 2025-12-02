@@ -1,0 +1,36 @@
+extends CharacterBody2D
+
+@export var move_speed = 120.0
+@export var deceleration = 0.1
+@export var gravity = 500.0
+var movement = Vector2()
+
+
+@warning_ignore("unused_parameter")
+func _physics_process(delta: float) -> void:
+	velocity.y += gravity * delta
+	
+	horizontal_movement()
+	set_animation()
+	flip()
+	
+	move_and_slide()
+
+func horizontal_movement():
+	movement = Input.get_axis("ui_left", "ui_right")
+	
+	if movement:
+		velocity.x = movement * move_speed
+	else:
+			velocity.x = move_toward(velocity.x, 0, move_speed * deceleration)
+func set_animation():
+	if velocity.x != 0:
+		$anim.play("move")
+	if velocity.x == 0:
+		$anim.play("idle")
+
+func flip():
+	if velocity.x > 0.0:
+		scale.x = scale.y * 1
+	if velocity.x < 0.0:
+		scale.x = scale.y * -1

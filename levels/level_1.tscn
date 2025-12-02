@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccpylv1wqhbi4"]
+
+[ext_resource type="PackedScene" uid="uid://dsu2itkaotuls" path="res://Player/scenes/player.tscn" id="1_vn7o3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn7o3"]
+size = Vector2(575, 132)
+
+[node name="level_1" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_vn7o3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="tempor floorary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tempor floorary"]
+position = Vector2(0.5, 96)
+shape = SubResource("RectangleShape2D_vn7o3")
+debug_color = Color(0, 0.41462037, 0.48491228, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="tempor floorary"]
+offset_left = -286.0
+offset_top = 30.0
+offset_right = 290.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 1)
