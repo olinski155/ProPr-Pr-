@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,14 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("Start pressed")
-	
-
-
-func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/level_1.tscn")
-
-func _on_Verlassen_3_pressed() -> void:
-	get_tree().quit()
-	
-	
+	pass
