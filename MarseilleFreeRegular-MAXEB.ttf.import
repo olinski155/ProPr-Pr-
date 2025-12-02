@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://clk5172axp87s"
-path="res://.godot/imported/CRONDEItalic.woff2-3529dbfda991fbd91f7801f6f73d2e70.fontdata"
+uid="uid://cht0jq14bwje6"
+path="res://.godot/imported/MarseilleFreeRegular-MAXEB.ttf-3d21e89713d2c6f4ea1a86c4f3ee5158.fontdata"
 
 [deps]
 
-source_file="res://CRONDEItalic.woff2"
-dest_files=["res://.godot/imported/CRONDEItalic.woff2-3529dbfda991fbd91f7801f6f73d2e70.fontdata"]
+source_file="res://MarseilleFreeRegular-MAXEB.ttf"
+dest_files=["res://.godot/imported/MarseilleFreeRegular-MAXEB.ttf-3d21e89713d2c6f4ea1a86c4f3ee5158.fontdata"]
 
 [params]
 
