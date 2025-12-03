@@ -6,13 +6,13 @@ extends CharacterBody2D
 @export var gravity = 500.0
 var movement = Vector2()
 
-@export_category("jump viriable")
+@export_category("jump variable")
 @export var jump_speed = 190.0
 @export var acceleration = 290.0
-@export var jump_amount = 2
+@export var max_jumps = 2
+var jump_count = 0
 
 
-@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	
@@ -23,33 +23,43 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+
 func horizontal_movement():
 	movement = Input.get_axis("ui_left", "ui_right")
 	
 	if movement:
 		velocity.x = movement * move_speed
 	else:
-			velocity.x = move_toward(velocity.x, 0, move_speed * deceleration)
+		velocity.x = move_toward(velocity.x, 0, move_speed * deceleration)
+
+
 func set_animation():
 	if velocity.x != 0:
 		$anim.play("move")
-	if velocity.x == 0:
+	else:
 		$anim.play("idle")
-	if velocity.y < 0:
-		$anim.play("Jump")
-	if velocity.y > 10:
-		$anim.play("Fall")
+
 
 func flip():
 	if velocity.x > 0.0:
 		scale.x = scale.y * 1
-	if velocity.x < 0.0:
+	elif velocity.x < 0.0:
 		scale.x = scale.y * -1
 
+
+# -------------------------
+# FIXED DOUBLE JUMP LOGIC
+# -------------------------
 func jump_logic():
+	# Auf dem Boden zurücksetzen
 	if is_on_floor():
-		jump_amount = 2
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		jump_amount -= 1
-		velocity.y -= lerp(jump_speed, acceleration, 0.1)
+		jump_count = 0
+
+	# Sprung drücken → erster oder zweiter Sprung
+	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
+		jump_count += 1
+		velocity.y = -lerp(jump_speed, acceleration, 0.1)
+
+	# Optional: kürzerer Sprung falls Taste losgelassen wird
+	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+		velocity.y *= 0.5
