@@ -1,7 +1,7 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
+@onready var main_buttons: VBoxContainer =$"Main Buttons"
+@onready var Einstellungen: Panel =$Options
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -10,6 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	print("Start pressed")
 	
+	func _ready():
+	main_buttons.visible = true
+	Einstellugen.visible = false
 
 
 func _on_start_pressed() -> void:
@@ -18,4 +21,11 @@ func _on_start_pressed() -> void:
 func _on_Verlassen_3_pressed() -> void:
 	get_tree().quit()
 	
-	
+	func _on_Einstellungen_pressed():
+	print("Einstellungen pressed")
+	main_buttons.visible = false
+	Einstellugen.visible = true
+
+
+func _on_zurück_Einstellungen_pressed() -> void:
+	_ready()
