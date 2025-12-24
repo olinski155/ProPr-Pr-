@@ -126,7 +126,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
 text = "Verlassen"
 
-[node name="Optons" type="Panel" parent="."]
+[node name="Options" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,7 +140,7 @@ offset_bottom = 194.25
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Optons"]
+[node name="Label" type="Label" parent="Options"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -151,7 +151,7 @@ text = "Einstellungen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="zurück" type="Button" parent="Optons"]
+[node name="zurück" type="Button" parent="Options"]
 layout_mode = 0
 offset_left = 147.0
 offset_top = 274.25
@@ -169,7 +169,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
 text = "zurück"
 
-[node name="HSlider" type="HSlider" parent="Optons"]
+[node name="HSlider" type="HSlider" parent="Options"]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 117.25
@@ -188,4 +188,4 @@ autoplay = true
 [connection signal="pressed" from="Main Buttons/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Main Buttons/Button2" to="." method="_on_Einstellungen_2_pressed"]
 [connection signal="pressed" from="Main Buttons/Button3" to="." method="_on_Verlassen_3_pressed"]
-[connection signal="pressed" from="Optons/zurück" to="." method="_on_zurück_Einstellungen_pressed"]
+[connection signal="pressed" from="Options/zurück" to="." method="_on_zurück_Einstellungen_pressed"]
