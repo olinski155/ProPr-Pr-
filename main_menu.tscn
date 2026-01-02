@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://0vojds80whhi"]
+[gd_scene load_steps=12 format=3 uid="uid://0vojds80whhi"]
 
 [ext_resource type="Texture2D" uid="uid://coxq1883quuwj" path="res://dark-5u7v1sbwoi6hdzsb.jpg" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://b0bp6s8soex6e" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontFile" uid="uid://cht0jq14bwje6" path="res://MarseilleFreeRegular-MAXEB.ttf" id="3_jix8l"]
+[ext_resource type="AudioStream" uid="uid://bltcqkduha08y" path="res://dark-cinematic-thriller-249485.mp3" id="4_jix8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("1_06t4h")
@@ -36,8 +37,17 @@ shadow_offset = Vector2(0, 3.41)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jix8l"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_glbon"]
+color = Color(0.062915266, 0.29570484, 1, 1)
+thickness = 6
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
@@ -48,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu7sn")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7vrkn")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,7 +87,7 @@ text = "Dark Legacy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Main Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,7 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 9
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="Main Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -106,7 +116,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Start"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="Main Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -120,7 +130,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Einstellungen"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="Main Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -134,6 +144,78 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Verlassen"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Einstellungen_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_Verlassen_3_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jix8l")
+volume_db = -3.339
+autoplay = true
+bus = &"Musik"
+
+[node name="Einstellungen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -109.0
+offset_right = 276.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Einstellungen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -25.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Einstellungen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Zurück" type="Button" parent="Einstellungen"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 251.0
+offset_right = 405.0
+offset_bottom = 320.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
+text = "Zurück"
+
+[node name="Audio Control" type="HSlider" parent="Einstellungen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -98.0
+offset_right = 132.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[connection signal="pressed" from="Main Buttons/Button" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Main Buttons/Button2" to="." method="_on_Einstellungen_2_pressed"]
+[connection signal="pressed" from="Main Buttons/Button3" to="." method="_on_Verlassen_3_pressed"]
+[connection signal="pressed" from="Einstellungen/Zurück" to="." method="_on_zurück_Einstellungen_pressed"]
+[connection signal="value_changed" from="Einstellungen/Audio Control" to="." method="_on_audio_control_value_changed"]
