@@ -1,16 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://0vojds80whhi"]
+[gd_scene load_steps=9 format=3 uid="uid://0vojds80whhi"]
 
 [ext_resource type="Texture2D" uid="uid://coxq1883quuwj" path="res://dark-5u7v1sbwoi6hdzsb.jpg" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://b0bp6s8soex6e" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontFile" uid="uid://cht0jq14bwje6" path="res://MarseilleFreeRegular-MAXEB.ttf" id="3_jix8l"]
-[ext_resource type="Script" uid="uid://bv18a2tpjgxdw" path="res://button.gd" id="4_jix8l"]
-[ext_resource type="AudioStream" uid="uid://3ng62ewnp7gv" path="res://835506__josefpres__piano-loops-194-efect-2-octave-long-loop-120-bpm.wav" id="5_glbon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("1_06t4h")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
-bg_color = Color(1, 0.99607843, 1, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -18,31 +16,39 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+bg_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
-bg_color = Color(0.5689727, 0.56897277, 0.56897265, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+bg_color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_nlkkf"]
-color = Color(1, 1, 1, 1)
-thickness = 6
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_qe12f"]
-color = Color(0.1672067, 0.39207017, 0.9800573, 1)
-thickness = 6
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu7sn")
 
-[node name="Backround" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,39 +57,42 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7vrkn")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -176.0
-offset_top = 53.0
-offset_right = 176.0
-offset_bottom = 136.0
+anchor_bottom = 0.5
+offset_left = -208.5
+offset_top = -232.0
+offset_right = 208.5
+offset_bottom = -120.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("3_jix8l")
-theme_override_font_sizes/font_size = 79
+theme_override_font_sizes/font_size = 71
 text = "Dark Legacy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Main Buttons" type="VBoxContainer" parent="."]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -157.0
-offset_top = -119.5
-offset_right = 157.0
-offset_bottom = 119.5
+offset_left = -164.0
+offset_top = -63.0
+offset_right = 165.0
+offset_bottom = 169.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 9
 
-[node name="Button" type="Button" parent="Main Buttons"]
+[node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -92,13 +101,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Start"
-script = ExtResource("4_jix8l")
 
-[node name="Button2" type="Button" parent="Main Buttons"]
+[node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -107,12 +115,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Einstellungen"
 
-[node name="Button3" type="Button" parent="Main Buttons"]
+[node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -121,71 +129,11 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Verlassen"
 
-[node name="Options" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -166.25
-offset_right = 272.0
-offset_bottom = 194.25
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Options"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 60.5
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Einstellungen"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="zurück" type="Button" parent="Options"]
-layout_mode = 0
-offset_left = 147.0
-offset_top = 274.25
-offset_right = 408.0
-offset_bottom = 344.25
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_glbon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qe12f")
-text = "zurück"
-
-[node name="HSlider" type="HSlider" parent="Options"]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 117.25
-offset_right = 421.0
-offset_bottom = 168.5
-theme_override_styles/slider = SubResource("StyleBoxLine_nlkkf")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_qe12f")
-value = 50.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_glbon")
-volume_db = 0.421
-autoplay = true
-
-[connection signal="pressed" from="Main Buttons/Button" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Main Buttons/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Main Buttons/Button2" to="." method="_on_Einstellungen_2_pressed"]
-[connection signal="pressed" from="Main Buttons/Button3" to="." method="_on_Verlassen_3_pressed"]
-[connection signal="pressed" from="Options/zurück" to="." method="_on_zurück_Einstellungen_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Einstellungen_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_Verlassen_3_pressed"]
