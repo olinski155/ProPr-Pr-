@@ -14,6 +14,10 @@ config/name="ProPräPrü Game"
 run/main_scene="uid://0vojds80whhi"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_left={
