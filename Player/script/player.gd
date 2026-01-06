@@ -11,6 +11,13 @@ var movement = Vector2()
 @export var acceleration = 290.0
 @export var jump_amount = 2
 
+@export_category("Wall jump variable")
+@export var wall_slide = 10
+@onready var left_ray: RayCast2D = $raycast/left_ray
+@onready var right_ray: RayCast2D = $raycast/right_ray
+@export var wall_x_force =200.0
+@export var wall_y_force = -220.0
+var is_wall_jumping =false
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -18,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	
 	horizontal_movement()
 	jump_logic()
+	wall_logic()
 	set_animation()
 	flip()
 	
@@ -43,8 +51,10 @@ func set_animation():
 func flip():
 	if velocity.x > 0.0:
 		scale.x = scale.y * 1
+		wall_x_force = 200.0
 	if velocity.x < 0.0:
 		scale.x = scale.y * -1
+		wall_x_force = -200.0
 
 func jump_logic():
 	if is_on_floor():
@@ -53,3 +63,19 @@ func jump_logic():
 	if Input.is_action_just_pressed("ui_accept"):
 		jump_amount -= 1
 		velocity.y -= lerp(jump_speed, acceleration, 0.1)
+		velocity.y = 0.3		
+		
+	else:
+		return
+		
+func wall_logic():
+	if is_on_wall_only():
+		velocity.y = 10
+		if Input.is_action_pressed("ui_accept"):
+			if left_ray.is_colliding():
+				print("left velocity is",velocity)
+				velocity = Vector2(wall_x_force, wall_y_force)
+			if right_ray.is_colliding():
+				velocity = Vector2(-wall_x_force, wall_y_force)
+				print("right velocity is",velocity)
+				

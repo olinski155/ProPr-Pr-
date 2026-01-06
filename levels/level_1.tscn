@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccpylv1wqhbi4"]
+[gd_scene load_steps=5 format=3 uid="uid://ccpylv1wqhbi4"]
 
 [ext_resource type="PackedScene" uid="uid://dsu2itkaotuls" path="res://Player/scenes/player.tscn" id="1_vn7o3"]
 [ext_resource type="Script" uid="uid://8phw3w6ldfuq" path="res://Player/scenes/player.gd" id="2_jirdo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn7o3"]
 size = Vector2(575, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jirdo"]
+size = Vector2(40, 149)
 
 [node name="level_1" type="Node2D"]
 
@@ -13,14 +16,10 @@ script = ExtResource("2_jirdo")
 max_jumps = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -1)
 zoom = Vector2(2, 2)
 
 [node name="tempor floorary" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tempor floorary"]
-position = Vector2(0.5, 96)
-shape = SubResource("RectangleShape2D_vn7o3")
-debug_color = Color(0, 0.41462037, 0.48491228, 0.41960785)
 
 [node name="ColorRect" type="ColorRect" parent="tempor floorary"]
 offset_left = -286.0
@@ -28,3 +27,50 @@ offset_top = 30.0
 offset_right = 290.0
 offset_bottom = 160.0
 color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tempor floorary"]
+position = Vector2(1, 97)
+shape = SubResource("RectangleShape2D_vn7o3")
+debug_color = Color(0, 0.41462037, 0.48491228, 0.41960785)
+
+[node name="wall_1" type="StaticBody2D" parent="."]
+position = Vector2(-242, 20)
+
+[node name="ColorRect" type="ColorRect" parent="wall_1"]
+offset_left = 22.0
+offset_top = -139.0
+offset_right = 62.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_1"]
+position = Vector2(42, -64.5)
+shape = SubResource("RectangleShape2D_jirdo")
+
+[node name="wall_2" type="StaticBody2D" parent="."]
+position = Vector2(113, 20)
+
+[node name="ColorRect" type="ColorRect" parent="wall_2"]
+offset_left = 22.0
+offset_top = -139.0
+offset_right = 62.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_2"]
+position = Vector2(42, -64.5)
+shape = SubResource("RectangleShape2D_jirdo")
+
+[node name="wall_3" type="StaticBody2D" parent="."]
+position = Vector2(-119, -80)
+
+[node name="ColorRect" type="ColorRect" parent="wall_3"]
+offset_left = 22.0
+offset_top = -139.0
+offset_right = 62.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_3"]
+position = Vector2(42, -64.5)
+shape = SubResource("RectangleShape2D_jirdo")

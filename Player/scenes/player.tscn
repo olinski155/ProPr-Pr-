@@ -101,6 +101,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D"]
+safe_margin = 0.14
 script = ExtResource("1_wmpps")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -117,3 +118,12 @@ shape = SubResource("RectangleShape2D_wmpps")
 libraries = {
 &"": SubResource("AnimationLibrary_dy67d")
 }
+
+[node name="raycast" type="Node2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="left_ray" type="RayCast2D" parent="raycast"]
+target_position = Vector2(-14, 0)
+
+[node name="left_ray2" type="RayCast2D" parent="raycast"]
+target_position = Vector2(14, 0)
