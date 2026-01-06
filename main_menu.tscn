@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://0vojds80whhi"]
+[gd_scene load_steps=14 format=3 uid="uid://0vojds80whhi"]
 
 [ext_resource type="Texture2D" uid="uid://coxq1883quuwj" path="res://dark-5u7v1sbwoi6hdzsb.jpg" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://b0bp6s8soex6e" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontFile" uid="uid://cht0jq14bwje6" path="res://MarseilleFreeRegular-MAXEB.ttf" id="3_jix8l"]
 [ext_resource type="AudioStream" uid="uid://bltcqkduha08y" path="res://dark-cinematic-thriller-249485.mp3" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://vepuh0wty3jo" path="res://vollbild_control.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://c4dl62vlxabhp" path="res://scale_control.gd" id="6_nlkkf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("1_06t4h")
@@ -178,10 +180,10 @@ vertical_alignment = 1
 
 [node name="Zurück" type="Button" parent="Einstellungen"]
 layout_mode = 0
-offset_left = 152.0
-offset_top = 251.0
-offset_right = 405.0
-offset_bottom = 320.0
+offset_left = 151.0
+offset_top = 262.0
+offset_right = 404.0
+offset_bottom = 331.0
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -194,19 +196,33 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Zurück"
 
-[node name="Audio Control" type="HSlider" parent="Einstellungen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Einstellungen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -98.0
-offset_right = 132.0
-offset_bottom = -46.0
+offset_left = -120.5
+offset_top = -113.0
+offset_right = 120.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Einstellungen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Einstellungen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Lautstärke"
+
+[node name="Audio Control" type="HSlider" parent="Einstellungen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
@@ -214,8 +230,38 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
+[node name="Vollbild control" type="CheckButton" parent="Einstellungen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Vollbild"
+script = ExtResource("5_glbon")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Einstellungen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Einstellungen/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "3D Auflösung"
+
+[node name="ScaleControl" type="OptionButton" parent="Einstellungen/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+selected = 0
+item_count = 4
+popup/item_0/text = "100%"
+popup/item_0/id = 0
+popup/item_1/text = "75%"
+popup/item_1/id = 1
+popup/item_2/text = "50%"
+popup/item_2/id = 2
+popup/item_3/text = "25%"
+popup/item_3/id = 3
+script = ExtResource("6_nlkkf")
+
 [connection signal="pressed" from="Main Buttons/Button" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Main Buttons/Button2" to="." method="_on_Einstellungen_2_pressed"]
 [connection signal="pressed" from="Main Buttons/Button3" to="." method="_on_Verlassen_3_pressed"]
 [connection signal="pressed" from="Einstellungen/Zurück" to="." method="_on_zurück_Einstellungen_pressed"]
-[connection signal="value_changed" from="Einstellungen/Audio Control" to="." method="_on_audio_control_value_changed"]
+[connection signal="value_changed" from="Einstellungen/VBoxContainer/HBoxContainer/Audio Control" to="." method="_on_audio_control_value_changed"]
+[connection signal="toggled" from="Einstellungen/VBoxContainer/Vollbild control" to="Einstellungen/VBoxContainer/Vollbild control" method="_on_toggled"]
+[connection signal="item_selected" from="Einstellungen/VBoxContainer/HBoxContainer2/ScaleControl" to="Einstellungen/VBoxContainer/HBoxContainer2/ScaleControl" method="_on_item_selected"]
