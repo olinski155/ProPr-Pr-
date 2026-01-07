@@ -125,5 +125,5 @@ position = Vector2(0, 10)
 [node name="left_ray" type="RayCast2D" parent="raycast"]
 target_position = Vector2(-14, 0)
 
-[node name="left_ray2" type="RayCast2D" parent="raycast"]
+[node name="right_ray" type="RayCast2D" parent="raycast"]
 target_position = Vector2(14, 0)

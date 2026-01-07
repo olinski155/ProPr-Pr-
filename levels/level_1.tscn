@@ -51,9 +51,9 @@ shape = SubResource("RectangleShape2D_jirdo")
 position = Vector2(113, 20)
 
 [node name="ColorRect" type="ColorRect" parent="wall_2"]
-offset_left = 22.0
+offset_left = 23.0
 offset_top = -139.0
-offset_right = 62.0
+offset_right = 63.0
 offset_bottom = 10.0
 color = Color(0, 0, 0, 1)
 
@@ -62,7 +62,7 @@ position = Vector2(42, -64.5)
 shape = SubResource("RectangleShape2D_jirdo")
 
 [node name="wall_3" type="StaticBody2D" parent="."]
-position = Vector2(-119, -80)
+position = Vector2(-149, -55)
 
 [node name="ColorRect" type="ColorRect" parent="wall_3"]
 offset_left = 22.0
