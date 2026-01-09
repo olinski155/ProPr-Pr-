@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsu2itkaotuls"]
+[gd_scene load_steps=9 format=3 uid="uid://dsu2itkaotuls"]
 
-[ext_resource type="Script" uid="uid://dtj5ta8xigtx5" path="res://Player/script/player.gd" id="1_wmpps"]
 [ext_resource type="Texture2D" uid="uid://cw5u7gyqyccwb" path="res://Player/Sprites/Player_hollow_knight.png" id="2_xr54b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmpps"]
@@ -102,7 +101,6 @@ _data = {
 
 [node name="player" type="CharacterBody2D"]
 safe_margin = 0.14
-script = ExtResource("1_wmpps")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xr54b")
