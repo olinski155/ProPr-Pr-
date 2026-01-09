@@ -241,7 +241,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Einstellungen/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "3D Auflösung"
+text = "2D Auflösung"
 
 [node name="ScaleControl" type="OptionButton" parent="Einstellungen/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
